@@ -1,3 +1,28 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Home Page</h1>
+{% include 'partials/_alerts.html' %}
+<div class="container">
+  <div class="row">
+    {% if all_addresses %} {% for address in all_addresses %}
+    <div class="col-sm">
+      <div class="card mb-5" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ address.name }}</h5>
+          <p class="card-text">
+            Email: {{ address.email }}<br />
+            Phone: {{ address.phone }}<br />
+            Address: {{ address.address }}<br />
+            City: {{ address.city }}<br />
+            State: {{ address.state }}<br />
+            Zipcode: {{ address.zipcode }}<br />
+          </p>
+          <a href="{% url 'edit' address.id %}" class="btn btn-primary">Edit</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <p>No addresses found</p>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}
