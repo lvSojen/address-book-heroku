@@ -71,7 +71,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
     }
 }
-DATABASES['default'] = dj_database_url.config(default='postgres://iaqijptkisrsuw:8175e3f380b4b88d4973711a31648bd4d9dee22dc5fa882f81176b97e01c889e@ec2-34-207-12-160.compute-1.amazonaws.com:5432/d9pullo731s17e')
+DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL'])
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
